@@ -9,7 +9,7 @@ public:
     QSqlDatabase myDB;
     bool connOpen() {
         QSqlDatabase myDB = QSqlDatabase::addDatabase("QSQLITE");
-        myDB.setDatabaseName("/Users/USER/Desktop/PP3_ArrobaInc/arrobaDB.sqlite");
+        myDB.setDatabaseName("arrobaDB.sqlite");
         if(myDB.open()) {
             qDebug() << "DB Connection Established";
             return true;
