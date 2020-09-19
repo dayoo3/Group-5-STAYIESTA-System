@@ -31,7 +31,7 @@ void HomestayDetail::on_buttonBook_clicked()
     conn.connOpen();
 
     QSqlQuery query;
-    query.prepare("SELECT bookingID FROM Homestay WHERE homestayID = '"+getSearchActivatedID()+"'");
+    query.prepare("SELECT bookingID FROM homestay WHERE homestayID = '"+getSearchActivatedID()+"'");
     if (query.exec()) {
         query.next();
         QSqlRecord rec = query.record();
@@ -97,7 +97,7 @@ void refreshTable(Ui::HomestayDetail* ui) {
                       "wifi as 'Wi-Fi', "
                       "nonSmoking as 'Non-Smoking', "
                       "homestayPrice as 'Price' "
-                      "FROM Homestay "
+                      "FROM homestay "
                       "WHERE homestayID = '"+homestayID+"'");
     if (queryPtr->exec())  {
         model->setQuery(*queryPtr);
@@ -116,7 +116,7 @@ void getFormData() {
 
     QSqlQuery query;
 
-    query.prepare("SELECT reviewID FROM Review "
+    query.prepare("SELECT reviewID FROM review "
                   "WHERE homestayID = '"+homestayID+"'");
     if (query.exec()) {
         while (query.next())
@@ -132,7 +132,7 @@ void setFormData(Ui::HomestayDetail* ui) {
     QSqlQuery query;
 
     if (!reviewVect.isEmpty()) {
-        query.prepare("SELECT reviewRate, reviewDesc FROM Review "
+        query.prepare("SELECT reviewRate, reviewDesc FROM review "
                       "WHERE reviewID = '"+reviewVect[i]+"'");
         if (query.exec()) {
             query.next();
@@ -150,6 +150,6 @@ void setFormData(Ui::HomestayDetail* ui) {
     else
         ui->buttonNextRev->setEnabled(true);
 
-        conn.connClose();
+    conn.connClose();
     }
 

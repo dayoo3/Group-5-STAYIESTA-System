@@ -34,14 +34,14 @@ void refreshRewards(Ui::RewardView *ui) {
     QSqlQueryModel *model = new QSqlQueryModel;
     QSqlQuery *queryPtr = new QSqlQuery(conn.myDB);
 
-    queryPtr->prepare("SELECT Reward.rewardID as 'Reward Code', "
-                      "User_Reward.isUsed as 'Used', "
-                      "Reward.rewardDesc as 'Description', "
-                      "(Reward.rewardValidDay || '/' || Reward.rewardValidMth || '/' || Reward.rewardValidYr) as 'Valid Until' "
-                      "FROM Reward, User, User_Reward WHERE "
-                      "User.userID = '"+userID+"' AND "
-                      "Reward.rewardID = User_Reward.rewardID AND "
-                      "User.userID = User_Reward.userID");
+    queryPtr->prepare("SELECT reward.rewardID as 'Reward Code', "
+                      "user_reward.isUsed as 'Used', "
+                      "reward.rewardDesc as 'Description', "
+                      "(reward.rewardValidDay || '/' || reward.rewardValidMth || '/' || reward.rewardValidYr) as 'Valid Until' "
+                      "FROM reward, users, user_reward WHERE "
+                      "users.userID = '"+userID+"' AND "
+                      "reward.rewardID = user_reward.rewardID AND "
+                      "users.userID = user_reward.userID");
     if (queryPtr->exec())  {
         model->setQuery(*queryPtr);
         ui->tableView->setModel(model);

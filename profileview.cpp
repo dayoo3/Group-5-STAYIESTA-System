@@ -31,7 +31,7 @@ void ProfileView::on_buttonHome_clicked()
     conn.connOpen();
 
     QSqlQuery query;
-    query.prepare("SELECT acctype FROM User WHERE userID = '"+userID+"'");
+    query.prepare("SELECT acctype FROM users WHERE userID = '"+userID+"'");
     if(query.exec()) {
         query.next();
         accType = query.value(0).toString();
@@ -71,7 +71,7 @@ void ProfileView::on_buttonUpdate_clicked()
             userAddr = ui->lineEditAddr->text(),
             userPhone = ui->lineEditPhone->text();
 
-    query.prepare("SELECT userPassword FROM User WHERE userID = '"+userID+"'");
+    query.prepare("SELECT userPassword FROM users WHERE userID = '"+userID+"'");
     if (query.exec()) {
         query.next();
         if (userPass != query.value(0).toString()) {
@@ -89,7 +89,7 @@ void ProfileView::on_buttonUpdate_clicked()
     }
 
     if (isUpdate) {
-        query.prepare("UPDATE User SET userPassword = '"+userPass+"', userEmail = '"+userAddr+"', userPhoneNum = '"+userPhone+"'"
+        query.prepare("UPDATE users SET userPassword = '"+userPass+"', userEmail = '"+userAddr+"', userPhoneNum = '"+userPhone+"'"
                       "WHERE userID = '"+userID+"'");
         if (query.exec()) {
             PopupProfileUpdate *pud = new PopupProfileUpdate;
@@ -122,7 +122,7 @@ void getFormData(Ui::ProfileView* ui) {
     }
 
     QSqlQuery query;
-    query.exec("SELECT * FROM User WHERE userID = '"+userID+"'");
+    query.exec("SELECT * FROM users WHERE userID = '"+userID+"'");
     if (query.exec()) {
         query.next();
         userFName = query.value(1).toString();

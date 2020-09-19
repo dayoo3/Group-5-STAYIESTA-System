@@ -39,7 +39,7 @@ void BookingDelete::on_buttonConfirm_clicked()
     bool isDelete = false;
 
     QSqlQuery query;
-    query.prepare("SELECT userPassword FROM User WHERE userID = '"+userID+"'");
+    query.prepare("SELECT userPassword FROM users WHERE userID = '"+userID+"'");
     if (query.exec()) {
         query.next();
         if (userPass == query.value(0).toString()) {
@@ -51,7 +51,7 @@ void BookingDelete::on_buttonConfirm_clicked()
     }
 
     if (isDelete) {
-        query.prepare("DELETE FROM Booking WHERE bookingID = '"+bookingID+"'");
+        query.prepare("DELETE FROM booking WHERE bookingID = '"+bookingID+"'");
         if (query.exec()) {
             PopupBookingDelete *pbd = new PopupBookingDelete;
             pbd->show();

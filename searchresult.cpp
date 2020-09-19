@@ -31,7 +31,7 @@ void SearchResult::on_buttonBook_clicked()
     conn.connOpen();
 
     QSqlQuery query;
-    query.prepare("SELECT bookingID FROM Homestay WHERE homestayID = '"+ID+"'");
+    query.prepare("SELECT bookingID FROM homestay WHERE homestayID = '"+ID+"'");
     if (query.exec()) {
         query.next();
         QSqlRecord rec = query.record();
@@ -118,7 +118,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
@@ -144,7 +144,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
@@ -171,7 +171,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
@@ -196,7 +196,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
@@ -224,7 +224,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
@@ -249,7 +249,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
@@ -275,7 +275,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
@@ -299,7 +299,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"'");
@@ -328,7 +328,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "carparkNum = '"+carparkNum+"' AND "
@@ -353,7 +353,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "carparkNum = '"+carparkNum+"' AND "
@@ -379,7 +379,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "carparkNum = '"+carparkNum+"' AND "
@@ -403,7 +403,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "carparkNum = '"+carparkNum+"'");
@@ -430,7 +430,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "wifi = '"+wifi+"' AND "
@@ -454,7 +454,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "wifi = '"+wifi+"'");
@@ -479,7 +479,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"' AND "
                                           "nonSmoking = '"+nonSmoking+"'");
@@ -502,7 +502,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBedrmNum = '"+homestayBedrmNum+"'");
                         if (queryPtr->exec())  {
@@ -532,7 +532,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
                                           "carparkNum = '"+carparkNum+"' AND "
@@ -557,7 +557,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
                                           "carparkNum = '"+carparkNum+"' AND "
@@ -583,7 +583,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
                                           "carparkNum = '"+carparkNum+"' AND "
@@ -607,7 +607,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
                                           "carparkNum = '"+carparkNum+"'");
@@ -634,7 +634,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
                                           "wifi = '"+wifi+"' AND "
@@ -658,7 +658,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
                                           "wifi = '"+wifi+"'");
@@ -683,7 +683,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"' AND "
                                           "nonSmoking = '"+nonSmoking+"'");
@@ -706,7 +706,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "homestayBathrmNum = '"+homestayBathrmNum+"'");
                         if (queryPtr->exec())  {
@@ -734,7 +734,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "carparkNum = '"+carparkNum+"' AND "
                                           "wifi = '"+wifi+"' AND "
@@ -758,7 +758,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "carparkNum = '"+carparkNum+"' AND "
                                           "wifi = '"+wifi+"'");
@@ -783,7 +783,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "carparkNum = '"+carparkNum+"' AND "
                                           "nonSmoking = '"+nonSmoking+"'");
@@ -806,7 +806,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "carparkNum = '"+carparkNum+"'");
                         if (queryPtr->exec())  {
@@ -832,7 +832,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "wifi = '"+wifi+"' AND "
                                           "nonSmoking = '"+nonSmoking+"'");
@@ -855,7 +855,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "wifi = '"+wifi+"'");
                         if (queryPtr->exec())  {
@@ -879,7 +879,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"' AND "
                                           "nonSmoking = '"+nonSmoking+"'");
                         if (queryPtr->exec())  {
@@ -901,7 +901,7 @@ void SearchResult::on_buttonFilter_clicked()
                                           "carparkNum as 'Carpark(s)', "
                                           "wifi as 'Wi-Fi', "
                                           "nonSmoking as 'Non-Smoking' "
-                                          "FROM Homestay WHERE "
+                                          "FROM homestay WHERE "
                                           "homestayLoc = '"+searchLocation+"'");
                         if (queryPtr->exec())  {
                             model->setQuery(*queryPtr);

@@ -22,7 +22,7 @@ TicketCreate::TicketCreate(QWidget *parent) :
     conn.connOpen();
 
     QSqlQuery query;
-    query.prepare("SELECT accType FROM User WHERE userID = '"+userID+"'");
+    query.prepare("SELECT accType FROM users WHERE userID = '"+userID+"'");
     if (query.exec()) {
         query.next();
         accType = query.value(0).toString();
@@ -71,7 +71,7 @@ void TicketCreate::on_buttonSubmit_clicked()
     QString title = ui->lineTitle->text();
 
     QSqlQuery query;
-    query.prepare("INSERT INTO Ticket "
+    query.prepare("INSERT INTO ticket "
                   "VALUES('"+ticketID+"','"+title+"','"+description+"','"+day+"','"+month+"','"+year+"','"+ticketType+"','"+userID+"')" );
 
     if(query.exec()){
@@ -88,7 +88,7 @@ void TicketCreate::on_buttonSubmit_clicked()
 
 QString IDCreate() {
     QSqlQuery query;
-    query.exec("SELECT ticketID FROM Ticket");
+    query.exec("SELECT ticketID FROM ticket");
 
     bool IDChecking = true;
     QString tempID = "";
@@ -120,7 +120,7 @@ void TicketCreate::on_buttonHome_clicked()
 
 
     QSqlQuery query;
-    query.prepare("SELECT acctype FROM User WHERE userID = '"+userID+"'");
+    query.prepare("SELECT acctype FROM users WHERE userID = '"+userID+"'");
     if(query.exec()){
         query.next();
         accType = query.value(0).toString();

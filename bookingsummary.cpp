@@ -31,14 +31,14 @@ void refreshTable(Ui::BookingSummary* ui) {
             userAddr = "";
 
     QSqlQuery query;
-    query.prepare("SELECT userFirstName, userLastName, userEmail FROM User WHERE userID = '"+userID+"'");
+    query.prepare("SELECT userFirstName, userLastName, userEmail FROM users WHERE userID = '"+userID+"'");
     if (query.exec()) {
         query.next();
         userName = query.value(0).toString() + " " + query.value(1).toString();
         userAddr = query.value(2).toString();
     }
 
-    query.prepare("SELECT * FROM Homestay WHERE homestayID = '"+homestayID+"'");
+    query.prepare("SELECT * FROM homestay WHERE homestayID = '"+homestayID+"'");
     if (query.exec()) {
         query.next();
         ui->lineEditBookID->setText(bookingID);
@@ -99,11 +99,11 @@ void BookingSummary::on_buttonBook_clicked()
             bookingYrFinal = QString::number(getDateOut().year());
 
     QSqlQuery query;
-    query.prepare("INSERT INTO Booking VALUES"
+    query.prepare("INSERT INTO booking VALUES"
                   "('"+bookingID+"','"+bookingDayInit+"','"+bookingMthInit+"','"+bookingYrInit+"',"
                   "'"+bookingDayFinal+"','"+bookingMthFinal+"','"+bookingYrFinal+"','N','N','"+userID+"')");
     if (query.exec()) {
-        query.prepare("UPDATE Homestay SET bookingID = '"+bookingID+"' "
+        query.prepare("UPDATE homestay SET bookingID = '"+bookingID+"' "
                       "WHERE homestayID = '"+homestayID+"'");
         if (query.exec()) {
             PopupBookingCreate *pbc = new PopupBookingCreate;

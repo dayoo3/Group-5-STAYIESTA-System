@@ -61,19 +61,19 @@ void refreshTable(Ui::HomestayView *ui) {
     QSqlQueryModel *model = new QSqlQueryModel;
     QSqlQuery *queryPtr = new QSqlQuery(conn.myDB);
 
-    queryPtr->prepare("SELECT Homestay.homestayID as 'ID', "
-                      "Homestay.homestayName as 'Name', "
-                      "Homestay.homestayLoc as 'Location', "
-                      "Homestay.homestayType as 'Type', "
-                      "Homestay.homestayBedrmNum as 'Bedrooms', "
-                      "Homestay.homestayBathrmNum as 'Bathrooms', "
-                      "Homestay.homestayPrice as 'Price', "
-                      "Homestay.carparkNum as 'Carpark(s)', "
-                      "Homestay.nonSmoking as 'Non-Smoking', "
-                      "Homestay.wifi as 'Wi-Fi'"
-                      "FROM Homestay, User WHERE "
-                      "Homestay.userID = '"+userID+"' AND "
-                      "User.userID = Homestay.userID;");
+    queryPtr->prepare("SELECT homestay.homestayID as 'ID', "
+                      "homestay.homestayName as 'Name', "
+                      "homestay.homestayLoc as 'Location', "
+                      "homestay.homestayType as 'Type', "
+                      "homestay.homestayBedrmNum as 'Bedrooms', "
+                      "homestay.homestayBathrmNum as 'Bathrooms', "
+                      "homestay.homestayPrice as 'Price', "
+                      "homestay.carparkNum as 'Carpark(s)', "
+                      "homestay.nonSmoking as 'Non-Smoking', "
+                      "homestay.wifi as 'Wi-Fi'"
+                      "FROM homestay, users WHERE "
+                      "homestay.userID = '"+userID+"' AND "
+                      "users.userID = homestay.userID;");
     if (queryPtr->exec())  {
         model->setQuery(*queryPtr);
         ui->tableView->setModel(model);

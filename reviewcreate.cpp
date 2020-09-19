@@ -49,12 +49,12 @@ void ReviewCreate::on_buttonSubmit_clicked()
     DBLogin conn;
     conn.connOpen();
     QSqlQuery query;
-    query.prepare("INSERT INTO Review VALUES"
+    query.prepare("INSERT INTO review VALUES"
                   "'"+reviewID+"','"+rate+"','"+desc+"','"+day+"','"+month+"','"+year+"','"+userID+"','"+bookingID+"',");
 
     if(query.exec()){
         query.next();
-        query.exec("UPDATE Booking SET reviewStatus = 'Y' WHERE bookingID = '"+bookingID+"'");
+        query.exec("UPDATE booking SET reviewStatus = 'Y' WHERE bookingID = '"+bookingID+"'");
         PopupReviewCreate *rpop = new PopupReviewCreate;
         rpop->show();
     }
@@ -63,7 +63,7 @@ void ReviewCreate::on_buttonSubmit_clicked()
 
 QString IDCheck() {
     QSqlQuery query;
-    query.exec("SELECT reviewID FROM Review");
+    query.exec("SELECT reviewID FROM review");
 
     bool IDChecking = true;
     QString tempID = "";

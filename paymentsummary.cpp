@@ -40,11 +40,11 @@ void refreshList(Ui::PaymentSummary* ui) {
     QString dateInit, dateFinal;
 
     QSqlQuery query;
-    query.prepare("SELECT Booking.bookingDayInit, Booking.bookingMthInit, Booking.bookingYrInit, "
-                  "Booking.bookingDayFinal, Booking.bookingMthFinal, Booking.bookingYrFinal, Homestay.homestayPrice "
-                  "FROM Booking, Homestay "
-                  "WHERE Booking.bookingID = '"+bookingID+"' AND "
-                  "Booking.bookingID = Homestay.bookingID");
+    query.prepare("SELECT booking.bookingDayInit, booking.bookingMthInit, booking.bookingYrInit, "
+                  "booking.bookingDayFinal, booking.bookingMthFinal, booking.bookingYrFinal, homestay.homestayPrice "
+                  "FROM booking, homestay "
+                  "WHERE booking.bookingID = '"+bookingID+"' AND "
+                  "booking.bookingID = homestay.bookingID");
     if (query.exec()) {
         query.next();
         QDate dateInit(query.value(2).toInt(),query.value(1).toInt(),query.value(0).toInt());
@@ -62,27 +62,27 @@ void refreshList(Ui::PaymentSummary* ui) {
 
     PaymentSummaryHorizontal* proxy_model = new PaymentSummaryHorizontal();
 
-    queryPtr->prepare("SELECT Booking.bookingID as 'Booking ID', "
-                      "User.userID as 'Customer ID', "
-                      "(User.userFirstName || ' ' || User.userLastName) as 'Name', "
-                      "User.userEmail as 'E-mail',"
-                      "Homestay.homestayID as 'Homestay ID', "
-                      "Homestay.homestayName as 'Name', "
-                      "Homestay.homestayLoc as 'Location', "
-                      "Homestay.homestayType as 'Type', "
-                      "Homestay.homestayBedrmNum as 'Bedrooms', "
-                      "Homestay.homestayBathrmNum as 'Bathrooms', "
-                      "Homestay.carparkNum as 'Carparks', "
-                      "Homestay.wifi as 'Wi-Fi', "
-                      "Homestay.nonSmoking as 'Non-Smoking', "
-                      "(Booking.bookingDayInit || '/' || Booking.bookingMthInit || '/' || Booking.bookingYrInit) as 'Check-in Date', "
-                      "(Booking.bookingDayFinal || '/' || Booking.bookingMthFinal || '/' || Booking.bookingYrFinal) as 'Check-out Date', "
-                      "(Homestay.homestayPrice * "+daysDiff+") as 'Price' "
-                      "FROM User, Booking, Homestay WHERE "
-                      "User.userID = '"+userID+"' AND "
-                      "Booking.bookingID = '"+bookingID+"' AND "
-                      "User.userID = Booking.userID AND "
-                      "Booking.bookingID = Homestay.bookingID");
+    queryPtr->prepare("SELECT booking.bookingID as 'Booking ID', "
+                      "users.userID as 'Customer ID', "
+                      "(users.userFirstName || ' ' || users.userLastName) as 'Name', "
+                      "users.userEmail as 'E-mail',"
+                      "homestay.homestayID as 'Homestay ID', "
+                      "homestay.homestayName as 'Name', "
+                      "homestay.homestayLoc as 'Location', "
+                      "homestay.homestayType as 'Type', "
+                      "homestay.homestayBedrmNum as 'Bedrooms', "
+                      "homestay.homestayBathrmNum as 'Bathrooms', "
+                      "homestay.carparkNum as 'Carparks', "
+                      "homestay.wifi as 'Wi-Fi', "
+                      "homestay.nonSmoking as 'Non-Smoking', "
+                      "(booking.bookingDayInit || '/' || booking.bookingMthInit || '/' || booking.bookingYrInit) as 'Check-in Date', "
+                      "(booking.bookingDayFinal || '/' || booking.bookingMthFinal || '/' || booking.bookingYrFinal) as 'Check-out Date', "
+                      "(homestay.homestayPrice * "+daysDiff+") as 'Price' "
+                      "FROM users, booking, homestay WHERE "
+                      "users.userID = '"+userID+"' AND "
+                      "booking.bookingID = '"+bookingID+"' AND "
+                      "user.userID = booking.userID AND "
+                      "booking.bookingID = homestay.bookingID");
     if (queryPtr->exec())  {
         model->setQuery(*queryPtr);
         QHeaderView *header = ui->tableView->horizontalHeader();
@@ -121,7 +121,7 @@ void PaymentSummary::on_buttonApply_clicked()
     QSqlQuery query;
     if (rewardID != "") {
         query.prepare("SELECT isUsed "
-                      "FROM User_Reward WHERE "
+                      "FROM user_Reward WHERE "
                       "userID = '"+userID+"' AND "
                       "rewardID = '"+rewardID+"'");
         if (query.exec()) {
@@ -136,7 +136,7 @@ void PaymentSummary::on_buttonApply_clicked()
                 pru->show();
             }
             else {
-                query.prepare("SELECT discountType, discountRate FROM Reward "
+                query.prepare("SELECT discountType, discountRate FROM reward "
                               "WHERE rewardID = '"+rewardID+"'");
                 if (query.exec()) {
                     query.next();
@@ -167,27 +167,27 @@ void PaymentSummary::on_buttonApply_clicked()
 
         PaymentSummaryHorizontal* proxy_model = new PaymentSummaryHorizontal();
 
-        queryPtr->prepare("SELECT Booking.bookingID as 'Booking ID', "
-                          "User.userID as 'Customer ID', "
-                          "(User.userFirstName || ' ' || User.userLastName) as 'Name', "
-                          "User.userEmail as 'E-mail',"
-                          "Homestay.homestayID as 'Homestay ID', "
-                          "Homestay.homestayName as 'Name', "
-                          "Homestay.homestayLoc as 'Location', "
-                          "Homestay.homestayType as 'Type', "
-                          "Homestay.homestayBedrmNum as 'Bedrooms', "
-                          "Homestay.homestayBathrmNum as 'Bathrooms', "
-                          "Homestay.carparkNum as 'Carparks', "
-                          "Homestay.wifi as 'Wi-Fi', "
-                          "Homestay.nonSmoking as 'Non-Smoking', "
-                          "(Booking.bookingDayInit || '/' || Booking.bookingMthInit || '/' || Booking.bookingYrInit) as 'Check-in Date', "
-                          "(Booking.bookingDayFinal || '/' || Booking.bookingMthFinal || '/' || Booking.bookingYrFinal) as 'Check-out Date', "
-                          "(Homestay.homestayPrice*"+daysDiff+discountType+discountRate+") as 'Price' "
-                          "FROM User, Booking, Homestay WHERE "
-                          "User.userID = '"+userID+"' AND "
-                          "Booking.bookingID = '"+bookingID+"' AND "
-                          "User.userID = Booking.userID AND "
-                          "Booking.bookingID = Homestay.bookingID");
+        queryPtr->prepare("SELECT booking.bookingID as 'Booking ID', "
+                          "users.userID as 'Customer ID', "
+                          "(users.userFirstName || ' ' || users.userLastName) as 'Name', "
+                          "users.userEmail as 'E-mail',"
+                          "homestay.homestayID as 'Homestay ID', "
+                          "homestay.homestayName as 'Name', "
+                          "homestay.homestayLoc as 'Location', "
+                          "homestay.homestayType as 'Type', "
+                          "homestay.homestayBedrmNum as 'Bedrooms', "
+                          "homestay.homestayBathrmNum as 'Bathrooms', "
+                          "homestay.carparkNum as 'Carparks', "
+                          "homestay.wifi as 'Wi-Fi', "
+                          "homestay.nonSmoking as 'Non-Smoking', "
+                          "(booking.bookingDayInit || '/' || booking.bookingMthInit || '/' || booking.bookingYrInit) as 'Check-in Date', "
+                          "(booking.bookingDayFinal || '/' || booking.bookingMthFinal || '/' || booking.bookingYrFinal) as 'Check-out Date', "
+                          "(homestay.homestayPrice*"+daysDiff+discountType+discountRate+") as 'Price' "
+                          "FROM user, booking, homestay WHERE "
+                          "users.userID = '"+userID+"' AND "
+                          "booking.bookingID = '"+bookingID+"' AND "
+                          "users.userID = booking.userID AND "
+                          "booking.bookingID = homestay.bookingID");
         if (queryPtr->exec())  {
             model->setQuery(*queryPtr);
             QHeaderView *header = ui->tableView->horizontalHeader();

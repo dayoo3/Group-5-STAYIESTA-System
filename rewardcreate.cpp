@@ -39,7 +39,7 @@ void RewardCreate::on_buttonSubmt_clicked()
     DBLogin conn;
     conn.connOpen();
     QSqlQuery query;
-    query.prepare("INSERT INTO Reward VALUES"
+    query.prepare("INSERT INTO reward VALUES"
                   "('"+rewardID+"','"+description+"','"+day+"','"+month+"','"+year+"','"+rewardType+"','"+value+"')");
     if(query.exec()){
         query.next();
@@ -71,7 +71,7 @@ QString randomRewardID(size_t length)
     conn.connOpen();
 
     QSqlQuery query;
-    query.exec("SELECT rewardID FROM Reward");
+    query.exec("SELECT rewardID FROM reward");
 
     bool IDChecking = true;
     while (IDChecking == true) {

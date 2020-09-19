@@ -44,7 +44,7 @@ void HomestayUpdate::on_buttonConfirm_clicked()
         nonSmoking = "N";
 
     QSqlQuery query;
-    query.prepare("UPDATE Homestay SET "
+    query.prepare("UPDATE homestay SET "
                   "homestayBedrmNum = '"+homestayBedrmNum+"', "
                   "homestayBathrmNum = '"+homestayBathrmNum+"', "
                   "homestayPrice = '"+homestayPrice+"', "
@@ -81,7 +81,7 @@ void getFormData(Ui::HomestayUpdate* ui) {
     int index = 0;
 
     QSqlQuery query;
-    query.prepare("SELECT * FROM Homestay WHERE homestayID = '"+ID+"' OR homestayName = '"+ID+"'");
+    query.prepare("SELECT * FROM homestay WHERE homestayID = '"+ID+"' OR homestayName = '"+ID+"'");
     if (query.exec()) {
         query.next();
         if (query.value(3).toString() == "Apartment")

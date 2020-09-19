@@ -59,7 +59,7 @@ void HomestayAdd::on_buttonAdd_clicked()
 
         Homestay newHomestay(homestayID, homestayName, homestayLoc, homestayType, homestayBedrmNum, homestayBathrmNum, homestayPrice, carparkNum, wifi, nonSmoking);
         QSqlQuery query;
-        query.prepare("INSERT INTO Homestay(homestayID, homestayName, homestayLoc, homestayType, homestayBedrmNum, homestayBathrmNum, homestayPrice, carparkNum, wifi, nonSmoking, userID) VALUES"
+        query.prepare("INSERT INTO homestay(homestayID, homestayName, homestayLoc, homestayType, homestayBedrmNum, homestayBathrmNum, homestayPrice, carparkNum, wifi, nonSmoking, userID) VALUES"
                       "('"+homestayID+"', '"+homestayName+"', '"+homestayLoc+"', '"+homestayType+"', '"+homestayBedrmNum+"', '"+homestayBathrmNum+"', '"+homestayPrice+"', '"+carparkNum+"', '"+wifi+"', '"+nonSmoking+"', '"+userID+"')");
         if (query.exec()) {
             PopupHomestayAdd *hPopup = new PopupHomestayAdd;
@@ -76,7 +76,7 @@ void HomestayAdd::on_buttonAdd_clicked()
 
 QString IDCheckHomestay() {
     QSqlQuery query;
-    query.exec("SELECT homestayID FROM Homestay");
+    query.exec("SELECT homestayID FROM homestay");
 
     bool IDChecking = true;
     QString tempID = "";

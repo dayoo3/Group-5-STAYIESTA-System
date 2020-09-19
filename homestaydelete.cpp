@@ -33,7 +33,7 @@ void HomestayDelete::on_buttonConfirm_clicked()
     bool isDelete = false;
 
     QSqlQuery query;
-    query.prepare("SELECT userPassword FROM User WHERE userID = '"+userID+"'");
+    query.prepare("SELECT userPassword FROM users WHERE userID = '"+userID+"'");
     if (query.exec()) {
         query.next();
         if (userPass == query.value(0).toString()) {
@@ -45,7 +45,7 @@ void HomestayDelete::on_buttonConfirm_clicked()
     }
 
     if (isDelete) {
-        query.prepare("DELETE FROM Homestay WHERE homestayID = '"+homestayID+"'");
+        query.prepare("DELETE FROM homestay WHERE homestayID = '"+homestayID+"'");
         if (query.exec()) {
             PopupHomestayDelete *phd = new PopupHomestayDelete;
             phd->show();

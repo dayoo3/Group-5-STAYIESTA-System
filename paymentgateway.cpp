@@ -57,9 +57,9 @@ void getFormData(Ui::PaymentGateway* ui) {
             totalPrice = getTotalPrice();
 
     QSqlQuery query;
-    query.prepare("SELECT Homestay.homestayID "
-                  "FROM Booking, Homestay WHERE "
-                  "Booking.bookingID = homestay.bookingID");
+    query.prepare("SELECT homestay.homestayID "
+                  "FROM booking, homestay WHERE "
+                  "booking.bookingID = homestay.bookingID");
     if (query.exec()) {
         query.next();
         ui->lineEditHomeID->setText(query.value(0).toString());

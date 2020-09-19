@@ -58,18 +58,18 @@ void PaymentAuthorization::on_buttonSubmit_clicked()
         QString year = QString::number(1900 + lTime->tm_year);
 
         if (isDiscounted) {
-            query.prepare("UPDATE User_Reward SET isUsed = 'Y' "
-                          "WHERE User_Reward.userID = '"+userID+"' AND "
-                          "User_Reward.rewardID = '"+rewardID+"'");
+            query.prepare("UPDATE user_Reward SET isUsed = 'Y' "
+                          "WHERE user_Reward.userID = '"+userID+"' AND "
+                          "user_Reward.rewardID = '"+rewardID+"'");
             query.exec();
 
-            query.prepare("INSERT INTO Payment VALUES"
+            query.prepare("INSERT INTO payment VALUES"
                           "('"+IDCheckPayment()+"','"+totalPrice+"','"+day+"','"+month+"','"+year+"','"+cardHolderName+"','"+cardNumber+"','"+userID+"','"+bookingID+"','"+rewardID+"')");
             if (query.exec())
                 isUpdated = true;
         }
         else {
-            query.prepare("INSERT INTO Payment VALUES(paymentID, paymentAmount, paymentDay, paymentMth, paymentYr, cardName, cardNum, userID, bookingID)"
+            query.prepare("INSERT INTO payment VALUES(paymentID, paymentAmount, paymentDay, paymentMth, paymentYr, cardName, cardNum, userID, bookingID)"
                           "('"+IDCheckPayment()+"','"+totalPrice+"','"+day+"','"+month+"','"+year+"','"+cardHolderName+"','"+cardNumber+"','"+userID+"','"+bookingID+"')");
             if (!query.exec())
                 qDebug() << query.lastError();
@@ -79,7 +79,7 @@ void PaymentAuthorization::on_buttonSubmit_clicked()
     }
 
     if (isUpdated) {
-        query.prepare("UPDATE Booking SET paymentStatus = 'Y' "
+        query.prepare("UPDATE booking SET paymentStatus = 'Y' "
                       "WHERE bookingID = '"+bookingID+"'");
         if (query.exec()) {
             PopupPaymentSuccess *psp = new PopupPaymentSuccess;
@@ -114,7 +114,7 @@ QString randomCaptcha(size_t length)
 
 QString IDCheckPayment() {
     QSqlQuery query;
-    query.exec("SELECT paymentID FROM Payment");
+    query.exec("SELECT paymentID FROM payment");
 
     bool IDChecking = true;
     QString tempID = "";

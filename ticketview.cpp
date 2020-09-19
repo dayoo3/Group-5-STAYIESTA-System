@@ -30,7 +30,7 @@ void refreshTable(Ui::TicketView* ui) {
                       "ticketDesc as 'Description', "
                       "userID as 'Submitted by', "
                       "(ticketDay || '/' || ticketMth || '/' || ticketYr) as 'Submitted on' "
-                      "FROM Ticket");
+                      "FROM ticket");
     if (queryPtr->exec())  {
         model->setQuery(*queryPtr);
         ui->tableView->setModel(model);

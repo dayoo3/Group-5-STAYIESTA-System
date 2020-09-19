@@ -53,7 +53,7 @@ void BookingView::on_tableView_activated(const QModelIndex &index)
     QString bookingID = ID;
 
     QSqlQuery query;
-    query.prepare("SELECT paymentStatus, reviewStatus FROM Booking WHERE bookingID = '"+bookingID+"'");
+    query.prepare("SELECT paymentStatus, reviewStatus FROM booking WHERE bookingID = '"+bookingID+"'");
     if (query.exec()) {
         query.next();
         if (query.value(0).toString() == "Y") {
@@ -79,17 +79,17 @@ void refreshTable(Ui::BookingView* ui) {
     QSqlQueryModel *model = new QSqlQueryModel;
     QSqlQuery *queryPtr = new QSqlQuery(conn.myDB);
 
-    queryPtr->prepare("SELECT Booking.bookingID AS 'BID', "
-                      "Homestay.homestayID AS 'HID', "
-                      "Homestay.homestayName AS 'Homestay Name', "
-                      "Homestay.homestayLoc AS 'Homestay Location', "
-                      "(Booking.bookingDayInit || '/' || Booking.bookingMthInit || '/' || Booking.bookingYrInit) AS 'Check-in Date', "
-                      "(Booking.bookingDayFinal || '/' || Booking.bookingMthFinal || '/' || Booking.bookingYrFinal) AS 'Check-out Date', "
-                      "Booking.paymentStatus AS 'Paid?', "
-                      "Booking.reviewStatus AS 'Reviewed?' FROM "
-                      "Booking, Homestay WHERE "
-                      "Booking.userID = '"+userID+"' AND "
-                      "Booking.bookingID = Homestay.bookingID");
+    queryPtr->prepare("SELECT booking.bookingID AS 'BID', "
+                      "homestay.homestayID AS 'HID', "
+                      "homestay.homestayName AS 'Homestay Name', "
+                      "homestay.homestayLoc AS 'Homestay Location', "
+                      "(booking.bookingDayInit || '/' || booking.bookingMthInit || '/' || booking.bookingYrInit) AS 'Check-in Date', "
+                      "(booking.bookingDayFinal || '/' || booking.bookingMthFinal || '/' || booking.bookingYrFinal) AS 'Check-out Date', "
+                      "booking.paymentStatus AS 'Paid?', "
+                      "booking.reviewStatus AS 'Reviewed?' FROM "
+                      "booking, homestay WHERE "
+                      "booking.userID = '"+userID+"' AND "
+                      "booking.bookingID = homestay.bookingID");
     if (queryPtr->exec())  {
         model->setQuery(*queryPtr);
         ui->tableView->setModel(model);

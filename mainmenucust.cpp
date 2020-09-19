@@ -75,7 +75,7 @@ void MainMenuCust::on_lineEditSearch_returnPressed()
     conn.connOpen();
 
     QSqlQuery query;
-    query.prepare("SELECT homestayLoc FROM Homestay WHERE homestayLoc LIKE '%"+searchLocation+"%'");
+    query.prepare("SELECT homestayLoc FROM homestay WHERE homestayLoc LIKE '%"+searchLocation+"%'");
     if (query.exec()) {
         query.next();
         searchLocation = query.value(0).toString();

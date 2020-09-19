@@ -37,7 +37,7 @@ void refreshTable(Ui::UserView* ui) {
                       "username as 'Username', "
                       "userEmail as 'E-Mail', "
                       "userPhoneNum as 'Phone Number' "
-                      "FROM User");
+                      "FROM users");
     if (queryPtr->exec())  {
         model->setQuery(*queryPtr);
         ui->tableView->setModel(model);

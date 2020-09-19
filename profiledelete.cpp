@@ -31,7 +31,7 @@ void ProfileDelete::on_lineEditPass_returnPressed()
     bool isDelete = false;
 
     QSqlQuery query;
-    query.prepare("SELECT userPassword FROM User WHERE userID = '"+userID+"'");
+    query.prepare("SELECT userPassword FROM users WHERE userID = '"+userID+"'");
     if (query.exec()) {
         query.next();
         if (userPass == query.value(0).toString())
@@ -42,7 +42,7 @@ void ProfileDelete::on_lineEditPass_returnPressed()
     }
 
     if (isDelete) {
-        query.prepare("DELETE FROM User WHERE userID = '"+userID+"'");
+        query.prepare("DELETE FROM users WHERE userID = '"+userID+"'");
         if (query.exec()) {
             PopupProfileDelete *pdPopup = new PopupProfileDelete;
             pdPopup->show();

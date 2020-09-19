@@ -79,7 +79,7 @@ QDate getDateOut() {
 
 QString IDCheckBooking() {
     QSqlQuery query;
-    query.exec("SELECT bookingID FROM Booking");
+    query.exec("SELECT bookingID FROM booking");
 
     bool IDChecking = true;
     QString tempID = "";

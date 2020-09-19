@@ -47,9 +47,9 @@ void RegisterPanel::on_lineEditAddr_returnPressed()
 
     if (!(fName == "" || lName == "" || user == "" || password == "" || phoneNum == "" || email == "")) {
         QSqlQuery query;
-        query.exec("SELECT userID FROM User");
+        query.exec("SELECT userID FROM users");
 
-        query.prepare("INSERT INTO User(userID,userFirstName,userLastName,username,userPassword,userPhoneNum,userEmail, accType) VALUES"
+        query.prepare("INSERT INTO users (userID,userFirstName,userLastName,username,userPassword,userPhoneNum,userEmail, accType) VALUES"
                    "(:userID, :userFirstName, :userLastName, :username, :userPassword, :userPhoneNum, :userEmail, :accType)");
         if (ui->checkBoxCust->isChecked()) {
             Customer newUser("C", fName, lName, user, password, phoneNum, email);
@@ -129,7 +129,7 @@ void RegisterPanel::on_buttonRegister_clicked()
 
 QString IDCheck(QString accType) {
     QSqlQuery query;
-    query.exec("SELECT userID FROM User");
+    query.exec("SELECT userID FROM users");
 
     bool IDChecking = true;
     QString tempID = "";
