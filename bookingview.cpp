@@ -56,16 +56,16 @@ void BookingView::on_tableView_activated(const QModelIndex &index)
     query.prepare("SELECT paymentStatus, reviewStatus FROM Booking WHERE bookingID = '"+bookingID+"'");
     if (query.exec()) {
         query.next();
-        if (query.value(0).toString() == "Y")
+        if (query.value(0).toString() == "Y") {
             ui->buttonPay->setEnabled(false);
-        else
+            if (query.value(1).toString() == "Y") {
+                ui->buttonReview->setEnabled(false); }
+            else
+                ui->buttonReview->setEnabled(true); }
+        else {
             ui->buttonPay->setEnabled(true);
-
-        if (query.value(1).toString() == "Y")
             ui->buttonReview->setEnabled(false);
-        else
-            ui->buttonReview->setEnabled(true);
-        ui->buttonDelete->setEnabled(true);
+        }
     }
     conn.connClose();
 }
@@ -114,7 +114,7 @@ void BookingView::on_buttonPay_clicked()
 }
 
 void BookingView::on_buttonReview_clicked()
-{
+{ 
     ReviewCreate *rc = new ReviewCreate;
     rc->show();
     this->close();
