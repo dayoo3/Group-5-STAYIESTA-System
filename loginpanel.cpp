@@ -46,7 +46,7 @@ void LoginPanel::on_lineEditPass_returnPressed()
     password = ui->lineEditPass->text();
 
     QSqlQuery query;
-    query.exec("SELECT * FROM User");
+    query.exec("SELECT * FROM users");
 
     bool userVerify = false;
     while (query.next()) {
@@ -99,7 +99,7 @@ QString getCurrUsername() { // class to use among multiple cpp files
     QString username = "";
 
     if (conn.connOpen()) {
-        QSqlQuery query("SELECT username FROM User WHERE userID='"+currUser+"'");
+        QSqlQuery query("SELECT username FROM users WHERE userID='"+currUser+"'");
         query.next();
         username = query.value(0).toString();
     }

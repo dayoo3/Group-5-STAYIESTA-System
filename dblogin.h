@@ -8,8 +8,13 @@ class DBLogin {
 public:
     QSqlDatabase myDB;
     bool connOpen() {
-        QSqlDatabase myDB = QSqlDatabase::addDatabase("QSQLITE");
-        myDB.setDatabaseName("arrobaDB.sqlite");
+        QSqlDatabase myDB = QSqlDatabase::addDatabase("QMYSQL");
+                myDB.setHostName("localhost");
+                myDB.setUserName("root");
+                myDB.setPassword("");
+                myDB.setDatabaseName("arrobadb");
+
+
         if(myDB.open()) {
             qDebug() << "DB Connection Established";
             return true;

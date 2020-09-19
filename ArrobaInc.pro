@@ -169,3 +169,8 @@ DISTFILES += \
     tick.png \
     trash.png \
     verify.png
+
+win32: LIBS += -L$$PWD/lib/ -llibmysql
+
+INCLUDEPATH += $$PWD/.
+DEPENDPATH += $$PWD/.
