@@ -21,7 +21,7 @@ PopupHomestayUnavailable::PopupHomestayUnavailable(QWidget *parent) :
 
     QSqlQuery query;
 
-    query.prepare("SELECT bookingDayFinal, bookingMthFinal, bookingYrFinal FROM Booking WHERE bookingID = '"+BID+"'");
+    query.prepare("SELECT bookingDayFinal, bookingMthFinal, bookingYrFinal FROM booking WHERE bookingID = '"+BID+"'");
     if (query.exec()) {
         query.next();
         day = query.value(0).toString();
