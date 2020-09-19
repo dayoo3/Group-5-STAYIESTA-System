@@ -37,5 +37,6 @@ private:
 void refreshTable(Ui::SearchResult*);
 
 QString getSearchActivatedID();
+QString getSearchBID();
 
 #endif // SEARCHRESULT_H

@@ -8,6 +8,7 @@
 #include "popuphomestayunavailable.h"
 
 static QString ID;
+static QString BID;
 
 SearchResult::SearchResult(QWidget *parent) :
     QWidget(parent),
@@ -41,6 +42,7 @@ void SearchResult::on_buttonBook_clicked()
             this->close();
         }
         else {
+            BID = query.value(0).toString();
             PopupHomestayUnavailable *phu = new PopupHomestayUnavailable;
             phu->show();
             this->close();
@@ -920,6 +922,10 @@ void SearchResult::on_buttonFilter_clicked()
 
 QString getSearchActivatedID() {
     return ID;
+}
+
+QString getSearchBID() {
+    return BID;
 }
 
 void SearchResult::on_buttonReset_clicked()
