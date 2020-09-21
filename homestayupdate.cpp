@@ -109,4 +109,6 @@ void getFormData(Ui::HomestayUpdate* ui) {
         if (query.value(9).toString() == 'Y')
             ui->checkBoxSmoke->setChecked(true);
     }
+
+    ui->comboBoxType->setEnabled(false);
 }
