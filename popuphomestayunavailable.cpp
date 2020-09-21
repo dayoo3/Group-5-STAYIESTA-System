@@ -39,7 +39,5 @@ PopupHomestayUnavailable::~PopupHomestayUnavailable()
 
 void PopupHomestayUnavailable::on_buttonOK_clicked()
 {
-    SearchResult *sr = new SearchResult;
-    sr->show();
     this->close();
 }
