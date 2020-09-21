@@ -174,6 +174,8 @@ DISTFILES += \
     verify.png
 
 
+
+
 win32: LIBS += -L$$PWD/lib/ -llibmysql
 
 INCLUDEPATH += $$PWD/''
