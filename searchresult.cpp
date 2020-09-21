@@ -45,7 +45,6 @@ void SearchResult::on_buttonBook_clicked()
             BID = query.value(0).toString();
             PopupHomestayUnavailable *phu = new PopupHomestayUnavailable;
             phu->show();
-            this->close();
         }
     }
 
