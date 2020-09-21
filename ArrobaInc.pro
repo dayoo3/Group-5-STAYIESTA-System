@@ -35,6 +35,7 @@ SOURCES += \
     paymentsummary.cpp \
     popupbookingcreate.cpp \
     popupbookingdelete.cpp \
+    popupbookingdateinvalid.cpp \
     popuphomestayadd.cpp \
     popuphomestaydelete.cpp \
     popuphomestayunavailable.cpp \
@@ -85,6 +86,7 @@ HEADERS += \
     paymentsummaryhorizontal.h \
     popupbookingcreate.h \
     popupbookingdelete.h \
+    popupbookingdateinvalid.h \
     popuphomestayadd.h \
     popuphomestaydelete.h \
     popuphomestayunavailable.h \
@@ -129,6 +131,7 @@ FORMS += \
     paymentsummary.ui \
     popupbookingcreate.ui \
     popupbookingdelete.ui \
+    popupbookingdateinvalid.ui \
     popuphomestayadd.ui \
     popuphomestaydelete.ui \
     popuphomestayunavailable.ui \
