@@ -3,6 +3,7 @@
 #include "mainmenucust.h"
 #include "bookingsummary.h"
 #include "searchresult.h"
+#include "popupbookingdateinvalid.h"
 #include "dblogin.h"
 
 static QString bookingID;
@@ -25,9 +26,15 @@ BookingCreate::~BookingCreate()
 
 void BookingCreate::on_buttonHome_clicked()
 {
-    MainMenuCust *mmc = new MainMenuCust;
-    mmc->show();
-    this->close();
+    if (dateEditOut < dateEditIn) {
+        popupBookingDateInvalid *pb = new popupBookingDateInvalid;
+        pb->show();
+    }
+    else {
+        BookingSummary *bs = new BookingSummary;
+        bs->show();
+        this->close();
+    }
 }
 
 void BookingCreate::on_buttonReturn_clicked()
